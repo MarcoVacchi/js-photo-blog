@@ -9,6 +9,7 @@
 .main {
     background-image: url("/img/cork.png");
     background-size: cover;
+    font-family: "Sometype Mono", monospace;
 }
 
 .container {

@@ -19,3 +19,41 @@ rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano
 Note
 Non siete obbligati a usare Bootstrap: siete liberi di decidere come gestire lo stile :faccia_leggermente_sorridente:
 Buon Lavoro e buon divertimento!*/
+
+
+const endPoint = "https://lanciweb.github.io/demo/api/pictures/"; //creo una variabile che aggancia il server
+const container= document.getElementById("container-photo");
+let myPhoto = '';
+//console.log(endPoint);
+
+axios.get(endPoint)
+.then(response =>{
+
+    myPhoto = response.data;
+    let images = '';
+
+        //console.log(myPhoto);
+        //console.log(response.data);
+    myPhoto.forEach(result => {
+        console.log(result.url)
+        //console.log(result.url);
+        //console.log(result);
+
+        images += `<div class="card col-lg-4 col-md-6 col-sm-12" style="width: 18rem;">
+                    <div class="p-4 position-static bg-light">
+                        <div class="position-absolute top-0 start-50 translate-middle">
+                            <img src="img/pin.svg" alt="puntine">
+                        </div>
+                        <img class= "card-img-top" src="${result.url}"alt="puntine">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">${result.title}</p>
+                        <p class="card-text">${result.date}</p>
+                    </div>
+                </div>` 
+    });
+    
+    container.innerHTML = images;
+        
+    });
+
