@@ -70,6 +70,9 @@ function myFunction(){
 
             container.innerHTML = images;
 
-        });
+        })
+        .catch(error => {
+            console.error("error", error)
+    })
 
-}
+};
