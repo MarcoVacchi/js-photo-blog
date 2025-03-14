@@ -22,7 +22,7 @@ Buon Lavoro e buon divertimento!*/
 
 // richiamo la funzione che racchiude tutto il programma;
 
-myFunction();
+myFunction(); // invoco la mia funzione
 
 
 
@@ -35,26 +35,26 @@ myFunction();
 
 ////////////////////////////////FUNCTION///////////////////////////////////
 
-function myFunction(){
-    const endPoint = "https://lanciweb.github.io/demo/api/pictures/"; //creo una variabile che aggancia il server
-    const container = document.getElementById("container-photo"); // salvo in una variabile 
-    let myPhoto = '';
+function myFunction(){  // salvo tutto in una funzione in caso voglia riutilizzarla
+    const endPoint = "  /"; //creo una variabile che aggancia il server;
+    const container = document.getElementById("container-photo"); // salvo in una variabile l'HTML in cui inserirò il js;
+    let myPhoto = ''; // creo una variabile che diventerà il nuovo array;
     //console.log(endPoint);
 
-    axios.get(endPoint)
-        .then(response => {
+    axios.get(endPoint) // chiamo l'API;
+        .then(response => { // risposta dal server;
 
-            myPhoto = response.data;
-            let images = '';
+            myPhoto = response.data; // salvo la chiave "data" dell'oggetto in una variabile;
+            let images = '';  // creo una variabile per portare fuori il risultato, e stampare una sola volta tutto insieme;
 
             //console.log(myPhoto);
             //console.log(response.data);
-            myPhoto.forEach(result => {
-                console.log(result.url)
+            myPhoto.forEach(result => { // itero l'array con un ciclo forEach
+                console.log(result.url) // verifico cosa ottengo stampando la mia variabile + chiave url
                 //console.log(result.url);
                 //console.log(result);
-
-                images += `<div class="card col-lg-4 col-md-6 col-sm-12" style="width: 18rem;">
+                // inserisco l HTML da mettere DOM;
+                images += `<div class="card col-lg-4 col-md-6 col-sm-12" style="width: 18rem;"> 
                         <div class="p-4 position-static bg-light">
                             <div class="position-absolute top-0 start-50 translate-middle">
                                 <img src="img/pin.svg" alt="puntine">
@@ -68,10 +68,10 @@ function myFunction(){
                     </div>`
             });
 
-            container.innerHTML = images;
+            container.innerHTML = images; //inserisco l HTML nel DOM;
 
         })
-        .catch(error => {
+        .catch(error => {                      // dichiaro in caso di erroe
             console.error("error", error)
     })
 
