@@ -3,12 +3,19 @@
     background-image: url("/img/wall.png");
     background-size: cover;
     height: 150px;
+}
+
+body {
     font-family: "Edu TAS Beginner", cursive;
+    font-size: 20px;
 }
 
 .main {
     background-image: url("/img/cork.png");
     background-size: cover;
+}
+
+.f-family {
     font-family: "Sometype Mono", monospace;
 }
 

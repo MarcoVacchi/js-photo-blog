@@ -63,7 +63,7 @@ function myFunction(){
                         </div>
                         <div class="card-body">
                             <p class="card-text">${result.title}</p>
-                            <p class="card-text">${result.date}</p>
+                            <p class="card-text f-family">${result.date}</p>
                         </div>
                     </div>`
             });
