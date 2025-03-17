@@ -37,6 +37,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
   cursor: pointer;
+  align-content: center;
 }
 
 .my-img {
@@ -48,7 +49,6 @@ body {
   /* position: relative; */
   top: 150px;
   margin: auto;
-  margin-top: 230px;
 }
 
 .no-scroll {
