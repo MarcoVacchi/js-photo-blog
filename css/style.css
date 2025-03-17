@@ -26,7 +26,7 @@ body {
 
 #overlay {
   position: fixed;
-  /*display: none;
+  display: none;
   /* justify-content: center; */
   /* align-items: center; */
   width: 100%;
@@ -54,7 +54,7 @@ body {
 
 .no-scroll {
   overflow: hidden;
-  /*display: none;*/
+  
 }
 
 .mbb {

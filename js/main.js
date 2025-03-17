@@ -41,6 +41,7 @@ function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizz
         console.log(myPhoto);
         console.log(response.data);
         myPhoto.forEach(result => { // itero l'array con un ciclo forEach
+  
             console.log(result.url) // verifico cosa ottengo stampando la mia variabile + chiave url
             // console.log(result.url);
             // console.log(result);
@@ -61,12 +62,22 @@ function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizz
 
         container.innerHTML = images; //inserisco l HTML nel DOM;
 
+        const cardClick = document.querySelectorAll(".card");
+        const myOverlay = document.getElementById("overlay");
+        console.log(cardClick);
+       
+
+        cardClick[0].addEventListener("click", function(){
+         myOverlay.style.display = "block";
+         //myOverlay.classList.replace("display-block");
+        }) 
+
         })
         .catch(error => {                      // dichiaro in caso di erroe
         console.error("error", error)
-        })
+       })
 
-        };
+ };
 
 
         
@@ -78,13 +89,7 @@ function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizz
 // Dopodiché facciamo sì che cliccando una qualunque foto. L’overlay ricompaia.
 // Cliccando invece il button di chiusura, l’overlay scompare nuovamente.
 
-function on() {
-  document.getElementById("overlay").style.display = "block";
-}
 
-function off() {
-  document.getElementById("overlay").style.display = "none";
-}
 
 
 
