@@ -27,8 +27,8 @@ body {
 #overlay {
   position: fixed;
   display: none;
-  /* justify-content: center; */
-  /* align-items: center; */
+  justify-content: center; 
+  align-items: center; 
   width: 100%;
   height: 100%;
   top: 0;
@@ -39,6 +39,11 @@ body {
   z-index: 2;
   cursor: pointer;
   align-content: center;
+  flex-direction: column;
+}
+
+#current-img {
+  width: 500px;
 }
 
 .my-img {
@@ -59,4 +64,10 @@ body {
 
 .mbb {
   margin-bottom: 10px;
+}
+
+.card:hover {
+  transform: scale(1.1) rotate(5deg);
+  z-index: 10;
+  box-shadow: 10px 10px 5 px;
 }

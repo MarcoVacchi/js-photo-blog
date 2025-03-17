@@ -25,7 +25,8 @@ Buon Lavoro e buon divertimento!*/
 myFunction(); // invoco la mia funzione
 
 //////////////////////////////FUNCTION///////////////////////////////////
-
+const currentImg = document.getElementById("current-img");
+const button = document.getElementById("btn-stop");
 function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizzarla
    const endPoint = "https://lanciweb.github.io/demo/api/pictures/"; // creo una variabile che aggancia il server;
     const container = document.getElementById("container-photo"); // salvo in una variabile l'HTML in cui inserirò il js;
@@ -64,20 +65,31 @@ function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizz
 
         const cardClick = document.querySelectorAll(".card");
         const myOverlay = document.getElementById("overlay");
-        console.log(cardClick);
-       
-
-        cardClick[0].addEventListener("click", function(){
-         myOverlay.style.display = "block";
-         //myOverlay.classList.replace("display-block");
-        }) 
-
+        cardClick.forEach(result =>{
+          result.addEventListener("click", function(){
+            const imgSrc = this.querySelector(".card-img-top");
+            //console.log(imgSrc)
+            currentImg.src = imgSrc.src;
+            myOverlay.style.display = "flex";
+            //myOverlay.classList.replace("display-block");
+           })
+           button.addEventListener("click", function(){
+            myOverlay.style.display = "none";
+           });
+          
+        })
+       console.log(cardClick);
+        
         })
         .catch(error => {                      // dichiaro in caso di erroe
         console.error("error", error)
        })
-
  };
+
+
+
+
+
 
 
         
