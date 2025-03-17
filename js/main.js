@@ -68,16 +68,6 @@ function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizz
 
         };
 
-        function on() {
-          document.getElementById("overlay").style.display = "block";
-        }
-
-        function off() {
-          document.getElementById("overlay").style.display = "none";
-        }
-
-
-
 
         
 // Milestone 1
@@ -87,6 +77,16 @@ function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizz
 // Facciamo sparire l’overlay con l’aiuto di una classe CSS che imposti il display: none .
 // Dopodiché facciamo sì che cliccando una qualunque foto. L’overlay ricompaia.
 // Cliccando invece il button di chiusura, l’overlay scompare nuovamente.
+
+function on() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+
 
 // Milestone 3
 // Inseriamo il pezzo di logica finale: quando una foto viene cliccata, dobbiamo fare in modo che sia proprio quella foto a essere mostrata all’interno dell’overlay.
