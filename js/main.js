@@ -24,55 +24,77 @@ Buon Lavoro e buon divertimento!*/
 
 myFunction(); // invoco la mia funzione
 
+//////////////////////////////FUNCTION///////////////////////////////////
 
-
-
-
-
-
-
-
-
-////////////////////////////////FUNCTION///////////////////////////////////
-
-function myFunction(){  // salvo tutto in una funzione in caso voglia riutilizzarla
-    const endPoint = "  /"; //creo una variabile che aggancia il server;
+function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizzarla
+   const endPoint = "https://lanciweb.github.io/demo/api/pictures/"; // creo una variabile che aggancia il server;
     const container = document.getElementById("container-photo"); // salvo in una variabile l'HTML in cui inserirò il js;
     let myPhoto = ''; // creo una variabile che diventerà il nuovo array;
-    //console.log(endPoint);
+    console.log(endPoint);
 
     axios.get(endPoint) // chiamo l'API;
-        .then(response => { // risposta dal server;
+       .then(response => { // risposta dal server;
 
-            myPhoto = response.data; // salvo la chiave "data" dell'oggetto in una variabile;
-            let images = '';  // creo una variabile per portare fuori il risultato, e stampare una sola volta tutto insieme;
+           myPhoto = response.data; // salvo la chiave "data" dell'oggetto in una variabile;
+           let images = '';  // creo una variabile per portare fuori il risultato, e stampare una sola volta tutto insieme;
 
-            //console.log(myPhoto);
-            //console.log(response.data);
-            myPhoto.forEach(result => { // itero l'array con un ciclo forEach
-                console.log(result.url) // verifico cosa ottengo stampando la mia variabile + chiave url
-                //console.log(result.url);
-                //console.log(result);
-                // inserisco l HTML da mettere DOM;
-                images += `<div class="card col-lg-4 col-md-6 col-sm-12" style="width: 18rem;"> 
-                        <div class="p-4 position-static bg-light">
-                            <div class="position-absolute top-0 start-50 translate-middle">
-                                <img src="img/pin.svg" alt="puntine">
-                            </div>
-                            <img class= "card-img-top" src="${result.url}"alt="puntine">
+        console.log(myPhoto);
+        console.log(response.data);
+        myPhoto.forEach(result => { // itero l'array con un ciclo forEach
+            console.log(result.url) // verifico cosa ottengo stampando la mia variabile + chiave url
+            // console.log(result.url);
+            // console.log(result);
+            // inserisco l HTML da mettere DOM;
+            images += `<div class="card col-lg-4 col-md-6 col-sm-12" style="width: 18rem;">
+                    <div class="p-4 position-static bg-light">
+                        <div class="position-absolute top-0 start-50 translate-middle">
+                            <img src="img/pin.svg" alt="puntine">
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">${result.title}</p>
-                            <p class="card-text f-family">${result.date}</p>
-                        </div>
-                    </div>`
-            });
+                        <img class= "card-img-top" src="${result.url}"alt="puntine">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">${result.title}</p>
+                        <p class="card-text f-family">${result.date}</p>
+                    </div>
+                </div>`
+        });
 
-            container.innerHTML = images; //inserisco l HTML nel DOM;
+        container.innerHTML = images; //inserisco l HTML nel DOM;
 
         })
         .catch(error => {                      // dichiaro in caso di erroe
-            console.error("error", error)
-    })
+        console.error("error", error)
+        })
 
-};
+        };
+
+        function on() {
+          document.getElementById("overlay").style.display = "block";
+        }
+
+        function off() {
+          document.getElementById("overlay").style.display = "none";
+        }
+
+
+
+
+        
+// Milestone 1
+// Facciamo in modo di creare un overlay che copra l’intera pagina e all’interno, centrata, disponiamo un’immagine qualunque ed un button di chiusura.
+
+// Milestone 2
+// Facciamo sparire l’overlay con l’aiuto di una classe CSS che imposti il display: none .
+// Dopodiché facciamo sì che cliccando una qualunque foto. L’overlay ricompaia.
+// Cliccando invece il button di chiusura, l’overlay scompare nuovamente.
+
+// Milestone 3
+// Inseriamo il pezzo di logica finale: quando una foto viene cliccata, dobbiamo fare in modo che sia proprio quella foto a essere mostrata all’interno dell’overlay.
+// Ci sono diversi modi di farlo, provate a sperimentare :faccia_leggermente_sorridente:
+
+// Bonus
+// Spostandosi col mouse sopra le foto, queste si zoommano, ruotano di 10 gradi e la loro ombra aumenta, il tutto in manierà fluida. Inoltre il mouse diventa un puntatore, per far capire all’utente che può cliccare
+
+// Milestone 1
+// Facciamo in modo di creare un overlay che copra l’intera pagina e all’interno, centrata, disponiamo un’immagine qualunque ed un button di chiusura.
+
