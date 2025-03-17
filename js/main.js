@@ -27,6 +27,7 @@ myFunction(); // invoco la mia funzione
 //////////////////////////////FUNCTION///////////////////////////////////
 const currentImg = document.getElementById("current-img");
 const button = document.getElementById("btn-stop");
+const body = document.querySelector("body")
 function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizzarla
    const endPoint = "https://lanciweb.github.io/demo/api/pictures/"; // creo una variabile che aggancia il server;
     const container = document.getElementById("container-photo"); // salvo in una variabile l'HTML in cui inserirò il js;
@@ -50,13 +51,13 @@ function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizz
             images += `<div class="card col-lg-4 col-md-6 col-sm-12" style="width: 18rem;">
                     <div class="p-4 position-static bg-light">
                         <div class="position-absolute top-0 start-50 translate-middle">
-                            <img src="img/pin.svg" alt="puntine">
+                            <img src="img/pin.svg" class="pin" alt="puntine">
                         </div>
                         <img class= "card-img-top" src="${result.url}"alt="puntine">
                     </div>
                     <div class="card-body">
-                        <p class="card-text">${result.title}</p>
                         <p class="card-text f-family">${result.date}</p>
+                        <p class="card-text">${result.title}</p>
                     </div>
                 </div>`
         });
@@ -71,10 +72,12 @@ function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizz
             //console.log(imgSrc)
             currentImg.src = imgSrc.src;
             myOverlay.style.display = "flex";
+            body.classList.add("overflow-hidden");
             //myOverlay.classList.replace("display-block");
            })
            button.addEventListener("click", function(){
             myOverlay.style.display = "none";
+            body.classList.remove("overflow-hidden");
            });
           
         })
