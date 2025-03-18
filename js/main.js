@@ -29,26 +29,26 @@ const currentImg = document.getElementById("current-img");
 const button = document.getElementById("btn-stop");
 const body = document.querySelector("body")
 function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizzarla
-   const endPoint = "https://lanciweb.github.io/demo/api/pictures/"; // creo una variabile che aggancia il server;
+    const endPoint = "https://lanciweb.github.io/demo/api/pictures/"; // creo una variabile che aggancia il server;
     const container = document.getElementById("container-photo"); // salvo in una variabile l'HTML in cui inserirò il js;
     let myPhoto = ''; // creo una variabile che diventerà il nuovo array;
     console.log(endPoint);
 
     axios.get(endPoint) // chiamo l'API;
-       .then(response => { // risposta dal server;
+        .then(response => { // risposta dal server;
 
-           myPhoto = response.data; // salvo la chiave "data" dell'oggetto in una variabile;
-           let images = '';  // creo una variabile per portare fuori il risultato, e stampare una sola volta tutto insieme;
+            myPhoto = response.data; // salvo la chiave "data" dell'oggetto in una variabile;
+            let images = '';  // creo una variabile per portare fuori il risultato, e stampare una sola volta tutto insieme;
 
-        console.log(myPhoto);
-        console.log(response.data);
-        myPhoto.forEach(result => { // itero l'array con un ciclo forEach
-  
-            console.log(result.url) // verifico cosa ottengo stampando la mia variabile + chiave url
-            // console.log(result.url);
-            // console.log(result);
-            // inserisco l HTML da mettere DOM;
-            images += `<div class="card col-lg-4 col-md-6 col-sm-12" style="width: 18rem;">
+            console.log(myPhoto);
+            console.log(response.data);
+            myPhoto.forEach(result => { // itero l'array con un ciclo forEach
+
+                console.log(result.url) // verifico cosa ottengo stampando la mia variabile + chiave url
+                // console.log(result.url);
+                // console.log(result);
+                // inserisco l HTML da mettere DOM;
+                images += `<div class="card col-lg-4 col-md-6 col-sm-12" style="width: 18rem;">
                     <div class="p-4 position-static bg-light">
                         <div class="position-absolute top-0 start-50 translate-middle">
                             <img src="img/pin.svg" class="pin" alt="puntine">
@@ -60,34 +60,43 @@ function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizz
                         <p class="card-text">${result.title}</p>
                     </div>
                 </div>`
-        });
+            });
 
-        container.innerHTML = images; //inserisco l HTML nel DOM;
+            container.innerHTML = images; //inserisco l HTML nel DOM;
 
-        const cardClick = document.querySelectorAll(".card");
-        const myOverlay = document.getElementById("overlay");
-        cardClick.forEach(result =>{
-          result.addEventListener("click", function(){
-            const imgSrc = this.querySelector(".card-img-top");
-            //console.log(imgSrc)
-            currentImg.src = imgSrc.src;
-            myOverlay.style.display = "flex";
-            body.classList.add("overflow-hidden");
-            //myOverlay.classList.replace("display-block");
-           })
-           button.addEventListener("click", function(){
-            myOverlay.style.display = "none";
-            body.classList.remove("overflow-hidden");
-           });
-          
-        })
-       console.log(cardClick);
-        
-        })
+            // const cardClick = document.querySelectorAll(".card");
+            // const myOverlay = document.getElementById("overlay");
+            // cardClick.forEach(result => {
+            //     result.addEventListener("click", function () {
+            //         const imgSrc = this.querySelector(".card-img-top");
+            //         //console.log(imgSrc)
+            //         currentImg.src = imgSrc.src;
+            //         myOverlay.style.display = "flex";
+            //         body.classList.add("overflow-hidden");
+            //         //myOverlay.classList.replace("display-block");
+            //     })
+        //due diversi modi per creare il programma;
+            const cardClick = document.querySelectorAll(".card");
+            const myOverlay = document.getElementById("overlay");
+            for (let index = 0; index < cardClick.length; index++) {
+               cardClick[index].addEventListener("click", function () {
+                    const currentCard = cardClick[index].querySelector(".card-img-top");
+                    currentImg.src = currentCard.src;
+                    myOverlay.style.display = "flex";
+                    body.classList.add("overflow-hidden");
+                    myOverlay.classList.replace("d-block", "d-none");
+                })
+            }
+                button.addEventListener("click", function () {
+                    myOverlay.style.display = "none";
+                    body.classList.remove("overflow-hidden");
+                });
+            })      
         .catch(error => {                      // dichiaro in caso di erroe
-        console.error("error", error)
-       })
- };
+            console.error("error", error)
+        })
+
+};
 
 
 
@@ -95,7 +104,7 @@ function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizz
 
 
 
-        
+
 // Milestone 1
 // Facciamo in modo di creare un overlay che copra l’intera pagina e all’interno, centrata, disponiamo un’immagine qualunque ed un button di chiusura.
 
