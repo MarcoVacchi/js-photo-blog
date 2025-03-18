@@ -28,7 +28,7 @@ myFunction(); // invoco la mia funzione
 const currentImg = document.getElementById("current-img");
 const button = document.getElementById("btn-stop");
 const body = document.querySelector("body")
-function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizzarla
+function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizzarla un giorno;
     const endPoint = "https://lanciweb.github.io/demo/api/pictures/"; // creo una variabile che aggancia il server;
     const container = document.getElementById("container-photo"); // salvo in una variabile l'HTML in cui inserirò il js;
     let myPhoto = ''; // creo una variabile che diventerà il nuovo array;
@@ -76,23 +76,23 @@ function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizz
             //         //myOverlay.classList.replace("display-block");
             //     })
         //due diversi modi per creare il programma;
-            const cardClick = document.querySelectorAll(".card");
-            const myOverlay = document.getElementById("overlay");
-            for (let index = 0; index < cardClick.length; index++) {
-               cardClick[index].addEventListener("click", function () {
-                    const currentCard = cardClick[index].querySelector(".card-img-top");
-                    currentImg.src = currentCard.src;
-                    myOverlay.style.display = "flex";
-                    body.classList.add("overflow-hidden");
-                    myOverlay.classList.replace("d-block", "d-none");
+            const cardClick = document.querySelectorAll(".card"); // prendo le mie card salvandole in una variabile;
+            const myOverlay = document.getElementById("overlay"); // prendo il mio contenitore overlay con la classe inizializzata d none;
+            for (let index = 0; index < cardClick.length; index++) { // ciclo le mie card;
+               cardClick[index].addEventListener("click", function () { // aggiungo l evendo del click;
+                    const currentCard = cardClick[index].querySelector(".card-img-top"); // salvo in una variabile il click della card corrente che ho creato nel mio html;
+                    currentImg.src = currentCard.src; // current img è il mio contenitore vuoto immagini creato in html, a cui collego questo appena creato;
+                    myOverlay.style.display = "flex"; // rendo flex il mio overlay display inizializzato in d-none su css;
+                    body.classList.add("overflow-hidden"); // aggiungo la classe hidden al body per togliere la scrollbar quando la card viene cliccata;
+                    myOverlay.classList.replace("d-block", "d-none"); // utilizzo replace per cambiare da d-none a d-block;
                 })
             }
-                button.addEventListener("click", function () {
-                    myOverlay.style.display = "none";
-                    body.classList.remove("overflow-hidden");
+                button.addEventListener("click", function () { // secondo evento per quando chiudo il bottone; 
+                    myOverlay.style.display = "none"; // cambio nuovamente la card cliccata settandola a display-none;
+                    body.classList.remove("overflow-hidden");  // tolgo la classe hidden al body per rimettere la scrollbar quando la card viene chiusa;
                 });
             })      
-        .catch(error => {                      // dichiaro in caso di erroe
+        .catch(error => {                      // dichiaro in caso ci sia un erroe; 
             console.error("error", error)
         })
 
@@ -104,26 +104,4 @@ function myFunction() {  // salvo tutto in una funzione in caso voglia riutilizz
 
 
 
-
-// Milestone 1
-// Facciamo in modo di creare un overlay che copra l’intera pagina e all’interno, centrata, disponiamo un’immagine qualunque ed un button di chiusura.
-
-// Milestone 2
-// Facciamo sparire l’overlay con l’aiuto di una classe CSS che imposti il display: none .
-// Dopodiché facciamo sì che cliccando una qualunque foto. L’overlay ricompaia.
-// Cliccando invece il button di chiusura, l’overlay scompare nuovamente.
-
-
-
-
-
-// Milestone 3
-// Inseriamo il pezzo di logica finale: quando una foto viene cliccata, dobbiamo fare in modo che sia proprio quella foto a essere mostrata all’interno dell’overlay.
-// Ci sono diversi modi di farlo, provate a sperimentare :faccia_leggermente_sorridente:
-
-// Bonus
-// Spostandosi col mouse sopra le foto, queste si zoommano, ruotano di 10 gradi e la loro ombra aumenta, il tutto in manierà fluida. Inoltre il mouse diventa un puntatore, per far capire all’utente che può cliccare
-
-// Milestone 1
-// Facciamo in modo di creare un overlay che copra l’intera pagina e all’interno, centrata, disponiamo un’immagine qualunque ed un button di chiusura.
 
